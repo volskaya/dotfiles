@@ -1,0 +1,16 @@
+[gcloud]
+disabled = true
+
+[hostname]
+ssh_only = true
+style = "bold green"
+
+[character]
+success_symbol = "[\\[I\\]](bold white) [✖︎](bold green)"
+error_symbol = "[\\[I\\]](bold white) [✖](bold red)"
+vicmd_symbol = "[\\[N\\]](bold white) [✖](bold green)"
+
+[cmd_duration]
+show_notifications = true
+style = ""
+min_time_to_notify = 45_000

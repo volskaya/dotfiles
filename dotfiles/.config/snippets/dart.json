@@ -1,0 +1,90 @@
+{
+  "Reference context localizations": {
+    "prefix": "strs",
+    "body": ["final strings = AppLocalizations.of(context)!;"]
+  },
+  "Reference context theme": {
+    "prefix": "thm",
+    "body": ["final theme = Theme.of(context);"]
+  },
+  "Reference context media query": {
+    "prefix": "mda",
+    "body": ["final metrics = MediaQuery.of(context);"]
+  },
+  "Our colors": {
+    "prefix": "ourclrs",
+    "body": ["final colors = OurColors.of(context);"]
+  },
+  "Our typography": {
+    "prefix": "ourtpgraphy",
+    "body": ["final typography = OurTypography.of(context);"]
+  },
+  "Freezed class": {
+    "prefix": "frzd",
+    "body": [
+      "@freezed",
+      "class ${1:FreezedClassName} with _\\$${1:FreezedClassName} {",
+      "  const factory ${1:FreezedClassName}({",
+      "    $2",
+      "  }) = _${1:FreezedClassName};",
+      "}"
+    ]
+  },
+  "Freezed class with json": {
+    "prefix": "frzdjson",
+    "body": [
+      "@freezed",
+      "class ${1:FreezedClassName} with _\\$${1:FreezedClassName} {",
+      "  const factory ${1:FreezedClassName}({",
+      "    $2",
+      "  }) = _${1:FreezedClassName};",
+      "",
+      "  factory ${1:FreezedClassName}.fromJson(Map<String, dynamic> json) =>",
+      "      _\\$${1:FreezedClassName}FromJson(json);",
+      "}"
+    ]
+  },
+  "Our Cubit": {
+    "prefix": "ourcubit",
+    "body": [
+      "class ${1:CubitClassName} extends OurCubit<${2:CubitStateName}> {",
+      "  const ${1:CubitClassName}() : super(${2:CubitStateName}());",
+      "",
+      "  static ${1:CubitClassName} watch(BuildContext context) => context.watch<${1:CubitClassName}>();",
+      "  static ${1:CubitClassName} read(BuildContext context) => context.read<${1:CubitClassName}>();",
+      "",
+      "  $3",
+      "}"
+    ]
+  },
+  "Our Service": {
+    "prefix": "ourservice",
+    "body": [
+      "class ${1:ServiceClassName}  {",
+      "  static ${1:ServiceClassName} getInstance() => locate<${1:ServiceClassName}>();",
+      "",
+      "  $3",
+      "}"
+    ]
+  },
+  "Stateful hook": {
+    "prefix": "stfulhook",
+    "description": "Stateful hook",
+    "body": [
+      "${2:void} use${1:Hook}() => use(${3:_Hook}());",
+      "",
+      "class ${3:_Hook} extends Hook<${2:void}> {",
+      "  @override",
+      "  HookState<${2:void}, Hook<${2:void}>> createState() => ${3:_Hook}State();",
+      "}",
+      "",
+      "class ${3:_Hook}State extends HookState<${2:void}, ${3:_Hook}> {",
+      "  @override",
+      "  ${2:void} build(BuildContext context) {",
+      "    // TODO: implement build",
+      "    throw UnimplementedError();",
+      "  }",
+      "}"
+    ]
+  }
+}

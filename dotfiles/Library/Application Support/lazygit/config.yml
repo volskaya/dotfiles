@@ -1,0 +1,46 @@
+gui:
+  showBottomLine: false
+  showRandomTip: false
+  showFileIcons: false
+  mouseEvents: false
+  border: "rounded"
+  theme:
+    activeBorderColor:
+      - "#FFFFFF"
+      - default
+    inactiveBorderColor:
+      - "#757575"
+      - default
+    searchingActiveBorderColor:
+      - "#B2FA52"
+      - default
+    optionsTextColor:
+      - "#757575"
+      - default
+    selectedLineBgColor:
+      - "#292929" # set to `default` to have no background colour
+      - default
+    cherryPickedCommitBgColor:
+      - default
+    cherryPickedCommitFgColor:
+      - "#B2FA52"
+      - default
+    markedBaseCommitBgColor:
+      - default
+      - default
+    markedBaseCommitFgColor:
+      - "#B2FA52"
+      - default
+    unstagedChangesColor:
+      - "#FFFFFF"
+      - default
+    defaultFgColor:
+      - "#FFFFFF"
+      - default
+git:
+  # branchLogCmd: "git log --graph --color=false --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
+  # allBranchesLogCmd: "git log --graph --all --color=false --abbrev-commit --decorate --date=relative  --pretty=medium"
+  paging:
+    colorArg: always
+update:
+  method: never

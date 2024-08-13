@@ -1,0 +1,22 @@
+wsl = false
+no-multigrid = false
+vsync = true
+maximized = false
+srgb = false
+idle = true
+# neovim-bin = "~/.nvim-macos/bin/nvim" # in reality found dynamically on $PATH if unset
+frame = "buttonless"
+title-hidden = true
+
+
+[font]
+normal = ["Maple Mono NF"]
+bold = ["Maple Mono NF"]
+italic = ["Maple Mono NF"]
+bold_italic = ["Maple Mono NF"]
+size = 22
+edging = "antialias"
+hinting = "full"
+
+[font.features]
+MonoLisa = [ "+ss01", "+ss07", "+ss11", "-calt", "+ss09", "+ss02", "+ss14", "+ss16", "+ss17" ]

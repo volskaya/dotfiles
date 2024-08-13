@@ -1,0 +1,126 @@
+# Apps.
+fn + shift - e : code -n
+fn + alt + shift - e : emacs
+
+# Alacritty.
+# alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+# alt + shift - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -e fish -c tmux
+# alt + shift - f : /Applications/Alacritty.app/Contents/MacOS/alacritty -e fish -c "tmux new-session -d ranger && tmux set-option status off \\; attach"
+# alt + ctrl - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -o "window.dimensions.lines=50" -e fish -c tmux
+# fn + ctrl - e : /Applications/Alacritty.app/Contents/MacOS/alacritty -o "window.dimensions.lines=40" -o "window.dimensions.columns=200" -e fish
+
+# WezTerm CLI. (Doesn't open a new wezterm instance, nor can create a new instance without CLI or the terminal window will be unmanaged.)
+alt - return : /Applications/WezTerm.app/Contents/MacOS/wezterm cli spawn --new-window
+alt + shift - return : /Applications/WezTerm.app/Contents/MacOS/wezterm cli spawn --new-window -- fish 
+alt + shift - f : /Applications/WezTerm.app/Contents/MacOS/wezterm cli spawn --new-window -- ranger ~/
+alt + ctrl - return : /Applications/WezTerm.app/Contents/MacOS/wezterm --config "initial_rows=50" cli spawn --new-window -- fish 
+fn + ctrl - e : /Applications/WezTerm.app/Contents/MacOS/wezterm --config "initial_cols=200" --config "initial_rows=40" cli spawn --new-window -- fish
+
+# Close focused window.
+fn - q : yabai -m window --close
+fn + shift - w : yabai -m space --destroy
+fn + shift - n : yabai -m space --create
+fn + shift - 0 : yabai -m space --balance
+
+# Focus windows.
+fn - h : yabai -m window --focus west || yabai -m window --move rel:-20:0
+fn - j : yabai -m window --focus south || yabai -m window --move rel:0:+20
+fn - k : yabai -m window --focus north || yabai -m window --move rel:0:-20
+fn - l : yabai -m window --focus east || yabai -m window --move rel:+20:0
+
+# Swap window.
+fn + shift - h : yabai -m window --swap west || yabai -m window --move rel:+20:0 && yabai -m window --resize right:-40:0
+fn + shift - j : yabai -m window --swap south || yabai -m window --resize bottom:0:+40
+fn + shift - k : yabai -m window --swap north || yabai -m window --resize bottom:0:-40
+fn + shift - l : yabai -m window --swap east || yabai -m window --move rel:-20:0 && yabai -m window --resize right:+40:0
+
+# Center window.
+fn + shift - c : sh ~/.config/yabai/center_window.sh
+alt + shift - c : sh ~/.config/yabai/center_window.sh
+fn + shift - c : sh ~/.config/yabai/center_window.sh
+
+# Tab switching.
+fn - 0x0A : yabai -m space --focus recent
+fn - 0x35 : yabai -m space --focus recent
+fn - 0x32 : yabai -m space --focus recent
+fn - tab : yabai -m window --focus prev || yabai -m window --focus last
+
+# Focus displays.
+fn - c : sh ~/.config/yabai/switch_display.sh 3
+fn - x : sh ~/.config/yabai/switch_display.sh 1
+fn - z : sh ~/.config/yabai/switch_display.sh 2
+
+# Move window to display.
+fn + shift - c : sh ~/.config/yabai/move_to_display.sh 3
+fn + shift - x : sh ~/.config/yabai/move_to_display.sh 1
+fn + shift - z : sh ~/.config/yabai/move_to_display.sh 2
+
+# Equalize size of windows. (Maybe use = instead, for consistency.)
+fn + shift - 0 : yabai -m --equalize
+
+# Change space layout.
+fn + shift - t : yabai -m space --layout bsp # As in "Tiled".
+fn + shift - f : yabai -m space --layout float # As in "Floating".
+
+fn + shift - s : yabai -m window --toggle sticky
+fn - m : yabai -m window --toggle zoom-fullscreen || yabai -m window --grid 1:1:0:0:1:1
+fn - f : yabai -m window --toggle float
+
+# Toggle sticky, float and resize to picture-in-picture size.
+fn - p : yabai -m window --toggle sticky; yabai -m window --grid 5:5:4:0:1:1
+
+# Window toggles.
+fn - e : yabai -m window --toggle sticky
+fn + shift - v : yabai -m window --toggle split
+fn + alt - m : yabai -m window --grid 1:1:0:0:1:1
+fn + alt - f : yabai -m window --toggle native-fullscreen
+
+# Split ratios.
+fn + shift - a : yabai -m window --ratio rel:-0.05
+fn + shift - s : yabai -m window --ratio rel:+0.05
+fn + shift - w : yabai -m window --ratio rel:-0.05
+fn + shift - d : yabai -m window --ratio rel:+0.05
+
+# Switch space with [ ].
+fn - 0x21 : sh ~/.config/yabai/focus_display_and_space.sh prev || sh ~/.config/yabai/focus_display_and_space.sh last
+fn - 0x1E : sh ~/.config/yabai/focus_display_and_space.sh next || sh ~/.config/yabai/focus_display_and_space.sh first
+
+fn + shift - 0x21 : skhd -k "ctrl + alt + cmd - o"
+fn + shift - 0x1E : skhd -k "ctrl + alt + cmd - p"
+fn - b : skhd -k "cmd - 0x32" # Switch between the same app windows.
+fn - v : skhd -k "f11" # Show desktop.
+# fn - r : skhd -k "ctrl - 0x7D" # Show similar windows.
+# fn - 0x30 : skhd -k "cmd - 0x30"
+# fn - r : skhd -k "alt - tab"
+# fn - tab : skhd -k "alt - tab"
+# fn - r : skhd -k "ctrl - 0x7E" # Mission control.
+
+
+# Space switching by number.
+#
+# This number is relative to the 1st space of the display.
+fn - 1 : sh ~/.config/yabai/focus_effective_space.sh 1
+fn - 2 : sh ~/.config/yabai/focus_effective_space.sh 2
+fn - 3 : sh ~/.config/yabai/focus_effective_space.sh 3
+fn - 4 : sh ~/.config/yabai/focus_effective_space.sh 4
+fn - 5 : sh ~/.config/yabai/focus_effective_space.sh 5
+fn - 6 : sh ~/.config/yabai/focus_effective_space.sh 6
+fn - 7 : sh ~/.config/yabai/focus_effective_space.sh 7
+fn - 8 : sh ~/.config/yabai/focus_effective_space.sh 8
+fn - 9 : sh ~/.config/yabai/focus_effective_space.sh 9
+fn - 0 : sh ~/.config/yabai/focus_effective_space.sh 10
+
+fn + shift - 1 : sh ~/.config/yabai/move_to_effective_space.sh 1
+fn + shift - 2 : sh ~/.config/yabai/move_to_effective_space.sh 2
+fn + shift - 3 : sh ~/.config/yabai/move_to_effective_space.sh 3
+fn + shift - 4 : sh ~/.config/yabai/move_to_effective_space.sh 4
+fn + shift - 5 : sh ~/.config/yabai/move_to_effective_space.sh 5
+fn + shift - 6 : sh ~/.config/yabai/move_to_effective_space.sh 6
+fn + shift - 7 : sh ~/.config/yabai/move_to_effective_space.sh 7
+fn + shift - 8 : sh ~/.config/yabai/move_to_effective_space.sh 8
+fn + shift - 9 : sh ~/.config/yabai/move_to_effective_space.sh 9
+fn + shift - 0 : sh ~/.config/yabai/move_to_effective_space.sh 10
+
+fn + shift + alt - 0 : sh ~/.config/yabai/resize-twitch-android.sh
+fn + shift + alt - 9 : sh ~/.config/yabai/resize-twitch-terminal.sh
+fn + shift + alt - 8 : yabai -m window --layer below && yabai -m window --toggle sticky
